@@ -1,5 +1,5 @@
 
-const API_URLL = 'http://localhost:5000' || "http://127.0.0.1:5000";
+const API_URLL = 'window.location.origin;' || "http://127.0.0.1:5000";
 
 const urlParam = new URLSearchParams(window.location.search);
 const movieId = urlParam.get("id");

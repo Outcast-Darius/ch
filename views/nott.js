@@ -1,11 +1,11 @@
 
-const API = "http://localhost:5000";
+const API = "window.location.origin;";
 const urlParam = new URLSearchParams(window.location.search);
 const id = urlParam.get("uuid");
 const uuid = id;
 const user = document.getElementById("chatPartnerName")
 const messageNote = document.querySelector("#messageArea")
-const socket = io("http://localhost:5000");
+const socket = io("window.location.origin;");
 
 let meId = null;
 

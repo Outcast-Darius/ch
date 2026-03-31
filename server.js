@@ -1357,5 +1357,5 @@ const posterUploadErrorHandler = (err, req, res, next) => {
 
 //app.listen(PORT, () => console.log(`server running on http://localhost:${PORT}`));
 server.listen(5000, () => {
-    console.log('Server is running on http://localhost:5000');
+    console.log('Server is running on window.location.origin;');
 });

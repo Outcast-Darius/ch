@@ -7,13 +7,15 @@ require('dotenv').config();
 //setting up pool for a continuos db access
 const pool = mysql.createPool(
     {
-        host: process.env.DB_HOST,
-        user: process.env.DB_USER,
-        password: process.env.DB_PASSWORD,
-        database: process.env.DB_NAME,
+        host: process.env.DB_HOST || 'localhost',
+        user: process.env.DB_USER ,
+        password: process.env.DB_PASSWORD || process.env.DB_PASS,
+        database: process.env.DB_NAME || 'charity',
         connectionLimit: Number(process.env.LIMIT) || 20,
+        port: process.env.DB_PORT || 3306,
         queueLimit: 0,
         waitForConnections: true,
+        ssl: process.env.TIDB_HOST ? { minVersion: 'TLSv1.2', rejectUnauthorized: true } : null
 
     }
 );

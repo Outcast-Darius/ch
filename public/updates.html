@@ -123,7 +123,7 @@
     <script src="main.js"></script>
     <script src="profile.js"></script>
     <script>
-      const socket = io("http://localhost:5000");
+      const socket = io("window.location.origin;");
       const Notcontainer = document.querySelector(".chatResponseSection");
 
       async function findMyUid() {

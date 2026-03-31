@@ -147,7 +147,7 @@
     <script src="main.js"></script>
     <script src="profile.js"></script>
     <script>
-      const socket = io("http://localhost:5000");
+      const socket = io("window.location.origin;");
 
       const urlParams = new URLSearchParams(window.location.search);
       const partnerId = urlParams.get("uuid");
