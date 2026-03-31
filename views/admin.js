@@ -1317,7 +1317,7 @@ async function displayCounts() {
         };
 
         const memberdata = await results.json();
-        memberCount.textContent = memberdata.results + " Members";
+        memberCount.textContent = memberdata.results + " Member(s)";
 
     }
     catch (error) {

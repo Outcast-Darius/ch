@@ -235,11 +235,8 @@ app.post('/api/registerUser', validateRegisterMiddleware, async (req, res) => {
 app.patch('/api/passwordchange', authenticationToken, changePassword);
 
 app.patch('/api/makeNewAdmin', authenticationToken, async (req, res) => {
-    console.log("Request received for PATCH /api/makeNewAdmin");
-
     if (req.user.role !== "admin") {
-        return res.status(403).json({ message: "Insufficient permission" });
-    }
+        return res.status(403).json({ message: "Insufficient permission" });    }
 
     const { email } = req.body;
     try {

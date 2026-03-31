@@ -511,7 +511,7 @@ async function countAllUsers() {
 async function countMembers() {
     const sql = "SELECT COUNT(email) as mems FROM users WHERE role=?";
     try {
-        const [rows] = await pool.execute(sql, ['member']);
+        const [rows] = await pool.execute(sql, ['Member']);
         return rows[0].mems;
     }
     catch (error) {
