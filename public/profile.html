@@ -137,7 +137,7 @@
     </footer>
     <script src="main.js"></script>
     <script>
-        const API_BASE = "window.location.origin;" || "http://127.0.0.1:5000";
+        const API_BASE = window.location.origin || "http://127.0.0.1:5000";
         async function checkAuth() { // Added 'async'
             const token = sessionStorage.getItem("token");
 

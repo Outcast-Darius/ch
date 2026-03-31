@@ -21,8 +21,8 @@ const pool = mysql.createPool(
 );
 
 console.log("Checking Env Variables:");
-console.log("DB_USER:", process.env.DB_USER);
-console.log("DB_NAME:", process.env.DB_NAME);
+console.log("TIDB_USER:", process.env.TIDB_USER);
+console.log("TIDB_NAME:", process.env.TIDB_NAME);
 
 //function for registering new users to the site
 async function registerUser(username, email, phone, password, role, level, dateJoined) {

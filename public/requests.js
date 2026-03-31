@@ -1,5 +1,5 @@
 
-const API_URL = 'window.location.origin;' || "http://127.0.0.1:5000";
+const API_URL = window.location.origin || "http://127.0.0.1:5000";
 
 
 const username = document.getElementById("user");

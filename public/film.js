@@ -1,5 +1,5 @@
 
-const API_URL = 'window.location.origin;';
+const API_URL = window.location.origin
 const cultureContainer = document.getElementById("cultureFilms")
 const educationContainer = document.getElementById("educationFilms")
 const politicsContainer = document.getElementById("politicalFilms")

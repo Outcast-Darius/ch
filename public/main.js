@@ -114,7 +114,7 @@ const growth = document.getElementsByClassName("growth");
 const posting = document.getElementsByClassName("post");
 const moviePosting = document.getElementsByClassName("moviePost");
 
-const API_BASE_URL = window.location.origin;
+const API_BASE_URL = window.location.origin
 
 //function to validate email ensuring the email id of correct type
 function validateEmailAndPassword(email, password) {
