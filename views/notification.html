@@ -162,7 +162,7 @@
       const urlParams = new URLSearchParams(window.location.search);
       const partnerId = urlParams.get("uuid");
 
-      let roomId; / must be set AFTER myId is known
+      let roomId; // must be set AFTER myId is known
 
       async function getMyId() {
         let myId = sessionStorage.getItem("myId");
