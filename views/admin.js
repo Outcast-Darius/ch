@@ -1516,6 +1516,9 @@ async function displayUsersOvertime() {
             chart.data.datasets[0].data = counts;
             chart.update();
         }
+        else{
+            console.error("Failed to fetch user joining data");
+        }
     } catch (error) {
         console.error("Update failed", error);
         throw error
@@ -1544,6 +1547,9 @@ async function displayJoinRequestOvertime() {
             mychart1.data.labels = localLabels;
             mychart1.data.datasets[0].data = counts;
             mychart1.update();
+        }
+        else{
+            console.error("Failed to fetch join request data");
         }
     } catch (error) {
         console.error("Update failed", error);
@@ -1574,6 +1580,9 @@ async function displayBookingRequestOvertime() {
             mychart.data.datasets[0].data = counts;
             mychart.update();
         }
+        else{
+            console.error("Failed to fetch booking request data");
+        }
     } catch (error) {
         console.error("Update failed", error);
         throw error
@@ -1603,6 +1612,9 @@ async function displayPerformanceOvertime() {
             myMovies.data.datasets[0].data = counts;
             myMovies.update();
         }
+        else{
+            console.error("Failed to fetch performance data");
+        }
     } catch (error) {
         console.error("Update failed", error);
         throw error
@@ -1623,6 +1635,9 @@ async function displayReleasedMovies() {
             moviePie.data.labels = labels;
             moviePie.data.datasets[0].data = counts;
             moviePie.update();
+        }
+        else{
+            console.error("Failed to fetch released movies data");
         }
     } catch (error) {
         console.error("Update failed", error);
