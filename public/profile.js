@@ -29,7 +29,7 @@ async function checkAuth() {
             if (logoutBtn) logoutBtn.style.display = "block";
 
             // Set Profile Photos
-            const photoUrl = profileData.profilePhoto ? profileData.profilePhoto : "public/profile.png";
+            const photoUrl = profileData.profilePhoto ? profileData.profilePhoto : "/profile.png";
             const pro = document.getElementById("profile");
             pro.style.display = "block";
             document.getElementsByClassName("profile")[0].style.backgroundImage = `url('${photoUrl}') || url('profile.png')`;
@@ -78,6 +78,6 @@ document.addEventListener("DOMContentLoaded",()=>{
 const profilelink = document.getElementById("profile");
 if (profilelink) {
     profilelink.addEventListener("click", () => {
-        window.location.href = `${window.location.origin}/public/profile.html`;
+        window.location.href = `${window.location.origin}/profile.html`;
     });
 };

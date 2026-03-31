@@ -37,8 +37,8 @@ app.use('/images', express.static(path.join(__dirname, 'images')));
 const server = http.createServer(app);
 const io = new Server(server, {
     cors: {
-        origin: "http://127.0.0.1:5500", // Your Frontend Port
-        methods: ["GET", "POST"]
+        origin: ["https://ch-drama-club-app.onrender.com"] || "http://localhost:5000",
+        methods: ["GET", "POST", "PATCH", "DELETE", "PUT"],
     }
 });
 
@@ -66,7 +66,7 @@ io.on('connection', (socket) => {
 
 
 //grabbing port from dotenv file
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.TIDB_PORT || 5000;
 
 //verify jwt and store user for later use
 const authenticationToken = (req, res, next) => {
@@ -1360,6 +1360,6 @@ const posterUploadErrorHandler = (err, req, res, next) => {
 
 
 //app.listen(PORT, () => console.log(`server running on http://localhost:${PORT}`));
-server.listen(5000, () => {
+server.listen(process.env.TIDB_PORT || 5000, () => {
     console.log('Server is running on window.location.origin;');
 });
