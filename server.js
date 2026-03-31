@@ -30,6 +30,9 @@ app.use((req, res, next) => {
     next();
 });
 app.use('/views', express.static(path.join(__dirname, 'views')));
+app.use('/posters', express.static(path.join(__dirname, 'posters')));
+app.use('posters', express.static(path.join(__dirname, 'posters')));
+app.use('/images', express.static(path.join(__dirname, 'images')));
 const server = http.createServer(app);
 const io = new Server(server, {
     cors: {
