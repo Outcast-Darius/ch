@@ -1,0 +1,469 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>admins panel view</title>
+    <link rel="stylesheet" href="../../public/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+
+  <body>
+    <header>
+      <div class="logo"></div>
+      <nav>
+        <ul>
+          <li>
+            <a href="../../public/index.html" id="home" title="home"
+              ><i class="fa-solid fa-home"></i
+              ><span class="labels">home</span></a
+            >
+          </li>
+          <li>
+            <a href="../../public/services.html" id="services" title="services"
+              ><i class="fa-solid fa-gears"></i
+              ><span class="labels">services</span></a
+            >
+          </li>
+          <li>
+            <a href="../../public/booking.html" id="hiring" title="booking"
+              ><i class="fa-solid fa-receipt"></i
+              ><span class="labels">Booking</span></a
+            >
+          </li>
+          <li>
+            <a href="notification.html" title="response" id="response"
+              ><i class="fa-solid fa-bolt"></i
+              ><span class="labels">response</span></a
+            >
+          </li>
+          <li>
+            <a href="../../public/chats.html" id="chats" title="chatsbox"
+              ><i class="fa-solid fa-bell"></i
+              ><span class="labels">notification</span></a
+            >
+          </li>
+          <li>
+            <a href="../../public/requests.html" title="requests" id="request"
+              ><i class="fa-solid fa-clipboard-list"></i
+              ><span class="labels">requests</span></a
+            >
+          </li>
+          <li id="admindash">
+            <a href="/views/dashboard.html" title="dashboard" id="dashboard"
+              ><i class="fa-solid fa-chart-line"></i
+              ><span class="labels">dashboard</span></a
+            >
+          </li>
+        </ul>
+      </nav>
+      <div class="signFeature">
+        <div class="profile" style="display: block" id="profile"></div>
+        <button id="loginBtn" style="display: none">
+          <a href="/public/login.html">Log <span id="loginPart">In</span></a>
+        </button>
+      </div>
+    </header>
+    <div class="searchBar">
+      <input
+        type="text"
+        id="searchInput"
+        placeholder="Search by username, email, or phone..."
+      />
+      <button onclick="handleSearch()" id="searchbtn">Search</button>
+    </div>
+
+    <div class="posterUpload-modal" id="posterUpload-modal">
+      <div class="poster-modal" id="poster-modal">
+        <h2>Upload Movie Poster</h2>
+        <legend>
+          <input
+            type="file"
+            name="movieposter"
+            id="movieposter"
+            title="movieposter"
+            accept="image/*"
+          />
+        </legend>
+        <button id="uploadBtn">Upload</button>
+      </div>
+    </div>
+
+    <aside>
+      <ul>
+        <li></li>
+        <li><a href="#admins">Admins</a></li>
+        <li><a href="#members">Members</a></li>
+        <li><a href="#users">Users</a></li>
+        <li><a href="#eventRequests">Events</a></li>
+        <li><a href="#joinRequests">Requests</a></li>
+        <li><a href="#complaints">Complaints</a></li>
+        <li><a href="#complements">Complement</a></li>
+        <li><a href="#suggestions">Suggestions</a></li>
+        <li><a href="#movies">Movies</a></li>
+        <li><a href="#growth">Growth</a></li>
+        <li><a href="#post">Post Upcoming Event</a></li>
+        <li><a href="#moviepost">Post Movie</a></li>
+      </ul>
+    </aside>
+    <div class="actorsModal" id="actorsModal">
+      <div class="modal-content">
+        <form action="" method="post" id="actorsForm">
+          <fieldset>
+            <legend>Actor Name</legend>
+            <input type="text" name="" id="actorName" />
+          </fieldset>
+          <fieldset>
+            <legend>Alias Name</legend>
+            <input type="text" name="" id="aliasName" />
+          </fieldset>
+          <fieldset>
+            <legend>Role</legend>
+            <input type="text" name="" id="actorRole" />
+          </fieldset>
+          <fieldset>
+            <legend>Playtime</legend>
+            <input type="text" name="" id="playTime" />
+          </fieldset>
+          <fieldset>
+            <legend>Words</legend>
+            <textarea name="" id="actorWords"></textarea>
+          </fieldset>
+          <button id="addActor">ADD</button>
+        </form>
+      </div>
+    </div>
+
+    <section class="adminsPanel">
+      <div class="adminsSection">
+        <h2 id="admins">Site Admins</h2>
+        <table id="reactsOnAdmin">
+          <thead>
+            <tr>
+              <th class="hash">#</th>
+              <th class="th">Admin Name</th>
+              <th class="th">Email</th>
+              <th class="th">Phone Number</th>
+              <th class="th">Role</th>
+              <th class="th">Level</th>
+              <th class="th">ACTIONS</th>
+            </tr>
+          </thead>
+          <tbody id="adminsBody"></tbody>
+        </table>
+      </div>
+      <div class="members">
+        <h2 id="members">Members</h2>
+        <div class="memberCount"></div>
+        <table id="membersUpgrade">
+          <thead>
+            <tr>
+              <th class="hash">#</th>
+              <th class="th">Member Name</th>
+              <th class="th">Email</th>
+              <th class="th">Phone Number</th>
+              <th class="th">Role</th>
+              <th class="th">Level</th>
+              <th class="th">Date Joined</th>
+              <th class="th">ACTIONS</th>
+            </tr>
+          </thead>
+          <tbody id="membersBody"></tbody>
+        </table>
+      </div>
+      <div class="users">
+        <h2 id="users">Users</h2>
+        <div class="usersCount" id="usersCount"></div>
+        <table>
+          <thead>
+            <tr>
+              <th class="hash">#</th>
+              <th class="th">Username</th>
+              <th class="th">Email</th>
+              <th class="th">Phone Number</th>
+              <th class="th">Role</th>
+              <th class="th">Level</th>
+              <th class="th">Date Joined</th>
+              <th class="th">ACTIONS</th>
+            </tr>
+          </thead>
+          <tbody id="usersBody"></tbody>
+        </table>
+      </div>
+      <div class="eventRequests" id="eventRequests">
+        <h2 class="reqs">Events & Event Requests</h2>
+      </div>
+      <div class="joinRequests" id="joinRequests">
+        <h2 class="reqs">Join Requests</h2>
+      </div>
+      <div class="complaints">
+        <h2 id="complaints" style="color: red; font-weight: 700">Complaints</h2>
+      </div>
+      <div class="complements">
+        <h2 id="complements" style="color: green; font-weight: 700">
+          Complements
+        </h2>
+      </div>
+      <div class="suggestions">
+        <h2 id="suggestions" style="color: orange; font-weight: 700">
+          Suggestions
+        </h2>
+      </div>
+      <div class="movies">
+        <h2 id="movies">Our Movies</h2>
+        <table>
+          <thead>
+            <tr>
+              <th class="hash">#</th>
+              <th class="th">Title</th>
+              <th class="th">Director</th>
+              <th class="th">Producer</th>
+              <th class="th">Runtime</th>
+              <th class="th">Topic</th>
+              <th class="th">Age Rating</th>
+              <th class="th">Release Date</th>
+              <th class="th">ACTION</th>
+            </tr>
+          </thead>
+          <tbody id="movieBody"></tbody>
+        </table>
+      </div>
+      <div class="growth">
+        <h2 id="growth">Growth</h2>
+        <div class="growth2">
+          <div>
+            <h4>Events Perfomed</h4>
+            <canvas id="movies-performed"></canvas>
+          </div>
+          <div>
+            <h4>Posted Movies</h4>
+            <canvas id="movies-count"></canvas>
+          </div>
+        </div>
+        <div class="growth1">
+          <div>
+            <h4>Hire requests</h4>
+            <canvas id="hirerequests-overtime"> </canvas>
+          </div>
+          <div>
+            <h4>Join Requests</h4>
+            <canvas id="joinrequest-overtime"> </canvas>
+          </div>
+          <div>
+            <h4>Users</h4>
+            <canvas id="usersjoin-overtime"> </canvas>
+          </div>
+        </div>
+      </div>
+      <div class="post">
+        <h2 id="post">Post Event</h2>
+
+        <form action="" method="post" class="eventPostForm">
+          <div class="eventPostSection">
+            <div>
+              <fieldset>
+                <legend>Poster</legend>
+                <input
+                  type="file"
+                  name="poster"
+                  id="poster"
+                  placeholder="poster photo"
+                />
+              </fieldset>
+              <fieldset>
+                <legend>Event Title</legend>
+                <input
+                  type="text"
+                  name="title"
+                  id="title"
+                  placeholder="event title"
+                />
+              </fieldset>
+              <fieldset>
+                <legend>Event Venue</legend>
+                <input
+                  type="text"
+                  name="venue"
+                  id="venue"
+                  placeholder="event venue"
+                />
+              </fieldset>
+              <fieldset>
+                <legend>Event Date</legend>
+                <input
+                  type="date"
+                  name="date"
+                  id="date"
+                  placeholder="00/00/0000"
+                />
+              </fieldset>
+            </div>
+            <div>
+              <fieldset>
+                <legend>Event Time</legend>
+                <input type="time" name="time" id="time" placeholder="00:00" />
+              </fieldset>
+              <fieldset>
+                <legend>Event Description</legend>
+                <textarea
+                  name="description"
+                  id="description"
+                  cols="50"
+                  rows="10"
+                  placeholder="Event description..."
+                ></textarea>
+              </fieldset>
+
+              <button id="postEventBtn">POST</button>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="moviePost">
+        <h2 id="moviepost">Post New Movie</h2>
+        <form action="" method="post" class="moviePostForm">
+          <div class="moviePostSection">
+            <div>
+              <fieldset>
+                <legend>Movie Name</legend>
+                <input
+                  type="text"
+                  name=""
+                  id="moviename"
+                  placeholder="Movie Title"
+                />
+              </fieldset>
+              <fieldset>
+                <legend>Director</legend>
+                <input
+                  type="text"
+                  name="director"
+                  id="director"
+                  placeholder="Director Name"
+                />
+              </fieldset>
+              <fieldset>
+                <legend>Producer</legend>
+                <input
+                  type="text"
+                  name="producer"
+                  id="producer"
+                  placeholder="producer name"
+                />
+              </fieldset>
+              <fieldset>
+                <legend>Topic</legend>
+                <select name="topic" id="mtopic">
+                  <option value="">---select topic---</option>
+                  <option value="culture">Culture</option>
+                  <option value="education">Education</option>
+                  <option value="politics">Politics</option>
+                  <option value="relationships">Relationships</option>
+                  <option value="parenting">Parenting</option>
+                  <option value="parties">Parties</option>
+                  <option value="leadership">Leardership</option>
+                  <option value="war">Action and Wars</option>
+                  <option value="handover">Hand over</option>
+                </select>
+              </fieldset>
+              <fieldset>
+                <legend>Release Date</legend>
+                <input type="date" name="releaseDate" id="releaseDate" />
+              </fieldset>
+            </div>
+            <div>
+              <fieldset>
+                <legend>Age Rating</legend>
+                <select name="ageRating" id="ageRating">
+                  <option value="">---select view audience--</option>
+                  <option value="ge">GE</option>
+                  <option value="pg13">PG 13</option>
+                  <option value="pg16">PG 16</option>
+                  <option value="pg18">PG 18</option>
+                  <option value="pg">PG</option>
+                  <option value="xrated">X RATED</option>
+                  <option value="rrated">R RATED</option>
+                </select>
+              </fieldset>
+              <fieldset>
+                <legend>Runtime</legend>
+                <input
+                  type="text"
+                  name="runtime"
+                  id="runtime"
+                  placeholder="Runtime eg 1h 25min"
+                />
+              </fieldset>
+              <fieldset>
+                <legend>Main Sponsor</legend>
+                <input
+                  type="text"
+                  name="sponsor"
+                  id="sponsor"
+                  placeholder="main sponsor"
+                />
+              </fieldset>
+              <fieldset>
+                <legend>Number Of Actors</legend>
+                <input
+                  type="number"
+                  name="actors"
+                  id="actors"
+                  placeholder="total actors eg 20"
+                />
+              </fieldset>
+            </div>
+
+            <button id="nextStep">NEXT</button>
+          </div>
+        </form>
+      </div>
+    </section>
+    <footer>
+      <div class="footerContent">
+        <div class="social">
+          <h4>social</h4>
+          <a href="#"><i class="fab fa-tiktok"></i>chproduction</a><br />
+          <a href="#"><i class="fab fa-instagram"></i>chproduction</a><br />
+          <a href="#"><i class="fab fa-youtube"></i>chproduction</a><br />
+          <a href="#"><i class="fab fa-facebook"></i>chproduction</a>
+        </div>
+        <div class="contact">
+          <h4>Contact Us</h4>
+          <Call:i class="fas fa-phone"></Call:i
+          ><span id="contactnumber">0793636325</span><br />
+          <i class="fas fa-fax"></i><span id="contactfax">+254793636325</span
+          ><br />
+          <i class="fas fa-envelope"></i
+          ><span id="contactemail">chprod@gmail.com</span><br />
+        </div>
+        <div class="helpcenter">
+          <h4>help & Feedback</h4>
+          <a href="../../public/feedback.html">Feedback</a><br />
+          <a href="../../public/customercare.html">Customer Care</a><br />
+          <a href="../../public/Help.html">Help</a>
+        </div>
+        <div class="quicklinks">
+          <h4>Quick Links</h4>
+          <a href="../../public/index.html">home</a><br />
+          <a href="../../public/chats.html">Notification</a><br />
+          <a href="../../public/requests.html">requests</a><br />
+          <a href="../../public/services.html">services</a><br />
+          <a href="../../public/booking.html">booking</a><br />
+          <a href="../../public/films.html">films</a><br />
+        </div>
+      </div>
+      <div class="copyrights"></div>
+      <div class="creator">
+        <sub id="creator">Created By<br />Outcast DHO</sub>
+      </div>
+    </footer>
+    <script src="/public/main.js"></script>
+    <script src="/public/profile.js"></script>
+    <script src="admin.js"></script>
+  </body>
+</html>

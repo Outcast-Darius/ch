@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="light dark">
+    <title>services</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+</head>
+
+<body>
+    <header>
+        <div class="logo"></div>
+        <nav>
+            <ul>
+                <li><a href="index.html" id="home" title="home"><i class="fa-solid fa-home"></i><span
+                            class="labels">home</span></a></li>
+                <li><a href="services.html" id="services" title="services"><i class="fa-solid fa-gears"></i><span
+                            class="labels">services</span></a></li>
+                <li><a href="booking.html" id="hiring" title="booking"><i class="fa-solid fa-receipt"></i><span
+                            class="labels">Booking</span></a></li>
+                <li><a href="/views/notification.html" title="response" id="response"><i
+                            class="fa-solid fa-bolt"></i><span class="labels">response</span></a></li>
+                <li><a href="chats.html" id="chats" title="chatsbox"><i class="fa-solid fa-bell"></i><span
+                            class="labels">notification</span></a></li>
+                <li><a href="requests.html" title="requests" id="request"><i
+                            class="fa-solid fa-clipboard-list"></i><span class="labels">requests</span></a></li>
+                <li id="admindash"><a href="/views/dashboard.html" title="dashboard" id="dashboard"><i
+                            class="fa-solid fa-chart-line"></i><span class="labels">dashboard</span></a></li>
+            </ul>
+        </nav>
+        <div class="signFeature">
+            <div class="profile" id="profile">
+
+            </div>
+            <button id="loginBtn"><a href="login.html">Log <span id="loginPart">In</span></a></button>
+        </div>
+    </header>
+    <aside>
+        <h5>Menu</h5>
+        <ul>
+            <li><a href="#serviceSliderContainer">Home</a></li>
+            <li><a href="#serviceBox">Services</a></li>
+            <li><a href="#offers">Offers</a></li>
+            <li><a href="#movies">Our Films</a></li>
+        </ul>
+    </aside>
+    <section>
+        <main class="serviceSection">
+            <div class="serviceSliderContainer" id="serviceSliderContainer">
+                <!--<i class="fa-solid fa-bars"></i>-->
+                <div class="animations">
+                    <div class="slides"><img src="../posters/poster-1772815504725.jfif" alt="" /></div>
+                    <div class="slides"><img src="../posters/poster-1771827297262.png" alt="" /></div>
+                    <div class="slides"><img src="../posters/poster-1771932341152.png" alt="" /></div>
+                    <div class="slides"><img src="../posters/poster-1774521322890.jpg" alt="" /></div>
+                </div>
+                <div class="carouselContainer">
+                    <button class="carousel active" onclick="currentSlide(1)"></button>
+                    <button class="carousel" onclick="currentSlide(2)"></button>
+                    <button class="carousel" onclick="currentSlide(3)"></button>
+                    <button class="carousel" onclick="currentSlide(4)"></button>
+
+                </div>
+
+            </div>
+            </div>
+            <div class="services" id="serviceBox">
+                <h3 class="servicesHead" id="services" >Our Services</h3>
+                <div class="service1" id="service1">
+                    <ul>
+                        <li>CH PRODUCTIONS makes and perform films .</li>
+                        <li>We tailor performance to fit your needs.</li>
+                        <li>We have actors for hire for your specific functions.</li>
+                    </ul>
+                </div>
+                <div class="service2" id="service2">
+                    <ul>
+                        <li>CH PRODUCTIONS make and releases ready made movies for all range of viewers.</li>
+                        <li>Train and coach young generation for the betterment of future community.</li>
+                        <li>Offer employment to young and old talented peolple in the soceity.</li>
+                    </ul>
+                </div>
+               
+            </div>
+            <div class="offers" id="offers">
+                <h3 id="offers">Pricing</h3>
+            </div>
+            <div class="moviesContainer" id="moviesContainer">
+                <h3 id="movies">Our films</h3>
+                <div class="movie" id="movie">
+
+                </div>
+                <button id="moreMovies"><a href="films.html">More</a></button>
+            </div>
+        </main>
+    </section>
+    <footer>
+        <div class="footerContent">
+            <div class="social">
+                <h4>social</h4>
+                <a href="#"><i class="fab fa-tiktok"></i>chproduction</a><br>
+                <a href="#"><i class="fab fa-instagram"></i>chproduction</a><br>
+                <a href="#"><i class="fab fa-youtube"></i>chproduction</a><br>
+                <a href="#"><i class="fab fa-facebook"></i>chproduction</a>
+            </div>
+            <div class="contact">
+                <h4>Contact Us</h4>
+                <Call:i class="fas fa-phone"></Call:i><span id="contactnumber">0793636325</span><br>
+                <i class="fas fa-fax"></i><span id="contactfax">+254793636325</span><br>
+                <i class="fas fa-envelope"></i><span id="contactemail">chprod@gmail.com</span><br>
+            </div>
+            <div class="helpcenter">
+                <h4>help & Feedback</h4>
+                <a href="feedback.html">Feedback</a><br>
+                <a href="customercare.html">Customer Care</a><br>
+                <a href="Help.html">Help</a>
+            </div>
+            <div class="quicklinks">
+                <h4>Quick Links</h4>
+                <a href="index.html">home</a><br>
+                <a href="chats.html">Notification</a><br>
+                <a href="requests.html">requests</a><br>
+                <a href="services.html">services</a><br>
+                <a href="booking.html">booking</a><br>
+                <a href="films.html">films</a><br>
+            </div>
+        </div>
+        <div class="copyrights">
+
+        </div>
+        <div class="creator">
+            <sub id="creator">Created By<br>Outcast DHO</sub>
+        </div>
+    </footer>
+    <script src="main.js"></script>
+    <script src="profile.js"></script>
+    <script>
+        const API_URL = 'http://localhost:5000';
+        const movieContainer=document.getElementById("movie");
+
+async function findMovies() {
+    try {
+        const response = await fetch(`${API_URL}/api/findMoviePoster`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        });
+        if (response.ok) {
+            const movies = await response.json();
+            displayMovies(movies.results)
+        }
+        else {
+            const errorText = await response.json()
+            console.error("Error fetching movie ", errorText);
+        }
+    }
+    catch (error) {
+        console.error("Network error ", error);
+        throw error
+    }
+}
+
+function displayMovies(movies) {
+    movieContainer.innerHTML=''
+movies.forEach((movie) => {
+        CreateMovieCard(movie)
+    })
+}
+
+
+function CreateMovieCard(movie) {
+
+    const MovieCard = document.createElement("div");
+    MovieCard.classList.add("MovieCard");
+
+    MovieCard.innerHTML = `
+    <div>
+        <img src="${movie.moviePoster}" title="${movie.title}">
+        <h3 class="movie-title">${movie.title}</h3>
+        <h5 class="viewers">${movie.age}</h5>
+        <p class="runtime">${movie.runtime}</p>
+        
+    </div>
+    `;
+    movieContainer.appendChild(MovieCard)
+}
+
+document.addEventListener("DOMContentLoaded",async()=>{
+    await findMovies();
+})
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>change password</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+    />
+  </head>
+
+  <body>
+    <header>
+      <div class="logo"></div>
+      <nav>
+        <ul>
+          <li>
+            <a href="index.html" id="home" title="home"
+              ><i class="fa-solid fa-home"></i
+              ><span class="labels">home</span></a
+            >
+          </li>
+          <li>
+            <a href="services.html" id="services" title="services"
+              ><i class="fa-solid fa-gears"></i
+              ><span class="labels">services</span></a
+            >
+          </li>
+          <li>
+            <a href="booking.html" id="hiring" title="booking"
+              ><i class="fa-solid fa-receipt"></i
+              ><span class="labels">Booking</span></a
+            >
+          </li>
+          <li>
+            <a href="/views/notification.html" title="response" id="response"
+              ><i class="fa-solid fa-bolt"></i
+              ><span class="labels">response</span></a
+            >
+          </li>
+          <li>
+            <a href="chats.html" id="chats" title="chatsbox"
+              ><i class="fa-solid fa-bell"></i
+              ><span class="labels">notification</span></a
+            >
+          </li>
+          <li>
+            <a href="requests.html" title="requests" id="request"
+              ><i class="fa-solid fa-clipboard-list"></i
+              ><span class="labels">requests</span></a
+            >
+          </li>
+          <li id="admindash">
+            <a href="/views/dashboard.html" title="dashboard" id="dashboard"
+              ><i class="fa-solid fa-chart-line"></i
+              ><span class="labels">dashboard</span></a
+            >
+          </li>
+        </ul>
+      </nav>
+      <div class="signFeature">
+        <div class="profile" id="profile"></div>
+        <button id="loginBtn">
+          <a href="login.html">Log <span id="loginPart">In</span></a>
+        </button>
+      </div>
+    </header>
+    <section class="changeSection">
+      <form action="" method="post" class="changeForm">
+        <div class="errorbody"></div>
+        <fieldset>
+          <span id="changeTitle">Reset Password</span>
+          <input
+            type="text"
+            name="username"
+            value="current_user_name"
+            style="display: none"
+            autocomplete="username"
+          />
+          <fieldset>
+            <legend>Current Password</legend>
+            <input
+              type="password"
+              name="currentPassword"
+              maxlength=""
+              id="CurrentPassword"
+              autocomplete="current-password"
+              placeholder="*****************"
+            />
+            <sub id="wrongpass"></sub>
+          </fieldset>
+          <fieldset>
+            <legend>New Password</legend>
+            <input
+              type="password"
+              name="newPassword"
+              maxlength="16"
+              id="newPassword"
+              autocomplete="new-password"
+              placeholder="****************"
+            />
+            <sub id="passwordStrength"></sub>
+          </fieldset>
+          <fieldset>
+            <legend>Confirm Password</legend>
+            <input
+              type="password"
+              name="confirmPassword"
+              maxlength="16"
+              id="ConfirmPassword"
+              autocomplete="new-password"
+              placeholder="****************"
+            />
+            <sub id="passwordMatch"></sub>
+          </fieldset>
+        </fieldset>
+        <button id="resetPassword">Reset</button>
+      </form>
+    </section>
+    <footer>
+      <div class="footerContent">
+        <div class="social">
+          <h4>social</h4>
+          <a href="#"><i class="fab fa-tiktok"></i>chproduction</a><br />
+          <a href="#"><i class="fab fa-instagram"></i>chproduction</a><br />
+          <a href="#"><i class="fab fa-youtube"></i>chproduction</a><br />
+          <a href="#"><i class="fab fa-facebook"></i>chproduction</a>
+        </div>
+        <div class="contact">
+          <h4>Contact Us</h4>
+          <Call:i class="fas fa-phone"></Call:i
+          ><span id="contactnumber">0793636325</span><br />
+          <i class="fas fa-fax"></i><span id="contactfax">+254793636325</span
+          ><br />
+          <i class="fas fa-envelope"></i
+          ><span id="contactemail">chprod@gmail.com</span><br />
+        </div>
+        <div class="helpcenter">
+          <h4>help & Feedback</h4>
+          <a href="feedback.html">Feedback</a><br />
+          <a href="customercare.html">Customer Care</a><br />
+          <a href="Help.html">Help</a>
+        </div>
+        <div class="quicklinks">
+          <h4>Quick Links</h4>
+          <a href="index.html">home</a><br />
+          <a href="chats.html">Notification</a><br />
+          <a href="requests.html">requests</a><br />
+          <a href="services.html">services</a><br />
+          <a href="booking.html">booking</a><br />
+          <a href="films.html">films</a><br />
+        </div>
+      </div>
+      <div class="copyrights"></div>
+      <div class="creator">
+        <sub id="creator">Created By<br />Outcast DHO</sub>
+      </div>
+    </footer>
+    <script src="main.js"></script>
+    <script src="profile.js"></script>
+    <script>
+      const API_UR = "http://localhost:5000";
+      const passStrength = document.getElementById("passwordStrength");
+      const passMatch = document.getElementById("passwordMatch");
+      const wrongpass = document.getElementById("wrongpass");
+      const errordisplay = document.querySelector(".errorbody");
+      const resetbtn = document.getElementById("resetPassword");
+      const currentpassword = document.getElementById("CurrentPassword");
+
+      const newpassw = document.getElementById("newPassword");
+      if (newpassw) {
+        document
+          .getElementById("newPassword")
+          .addEventListener("input", (e) => {
+            const passtext = newpassw.value;
+            if (passtext.length <= 6) {
+              passStrength.textContent = "Weak password";
+              passStrength.style.color = "red";
+              passStrength.style.display = "block";
+              setTimeout(() => {
+                passStrength.style.display = "none";
+              }, 500);
+            } else {
+              passStrength.textContent = "Strong Password";
+              passStrength.style.color = "green";
+              passStrength.style.display = "block";
+              setTimeout(() => {
+                passStrength.style.display = "none";
+              }, 800);
+            }
+          });
+      }
+
+      const newpassconfirm = document.getElementById("ConfirmPassword");
+      if (newpassconfirm) {
+        document
+          .getElementById("ConfirmPassword")
+          .addEventListener("input", () => {
+            const passtext1 = newpassw.value;
+            const passtext2 = newpassconfirm.value;
+
+            if (!(passtext1 === passtext2)) {
+              passMatch.textContent = "Passwords don't match";
+              passMatch.style.color = "red";
+              passMatch.style.display = "block";
+              resetbtn.disabled = true;
+              setTimeout(() => {
+                passMatch.style.display = "none";
+              }, 5500);
+            } else {
+              passMatch.textContent = "Password match";
+              passMatch.style.color = "green";
+              passMatch.style.display = "block";
+              resetbtn.disabled = false;
+              setTimeout(() => {
+                passMatch.style.display = "none";
+              }, 1000);
+            }
+          });
+      }
+
+      async function resetpassword() {
+        const currentpass = currentpassword.value;
+        const newpass = newpassw.value;
+        const token = sessionStorage.getItem("token");
+        try {
+          const response = await fetch(`${API_UR}/api/passwordchange`, {
+            method: "PATCH",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`,
+            },
+            body: JSON.stringify({ newpass, currentpass }),
+          });
+          if (response.ok) {
+            console.log("Password changed succesully");
+            alert("Password changed succesfully.");
+            sessionStorage.removeItem(token);
+            window.location.href = "/public/login.html";
+          } else {
+            const errortext = await response.json();
+            console.error("Error occured changing password");
+            errordisplay.style.display = "block";
+            errordisplay.textContent = errortext || "Network error";
+          }
+        } catch (error) {
+          console.error("Network error ", error);
+          throw error;
+        }
+      }
+
+      resetbtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        if (!newpassw || !currentpassword || !newpassconfirm) {
+          errordisplay.style.display = "block";
+          errordisplay.textContent = "ALL FIELDS ARE REQUIRED";
+          alert("Please fill in all fields");
+          return;
+        }
+        resetpassword();
+      });
+    </script>
+  </body>
+</html>

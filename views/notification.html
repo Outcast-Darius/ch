@@ -1,0 +1,371 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light dark" />
+    <title>notification box</title>
+    <link rel="stylesheet" href="../public/style.css" />
+    <link rel="stylesheet" href="../public/nott.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+    />
+  </head>
+
+  <body>
+    <header>
+      <div class="logo"></div>
+      <nav>
+        <ul>
+          <li>
+            <a href="../public/index.html" id="home" title="home"
+              ><i class="fa-solid fa-home"></i
+              ><span class="labels">home</span></a
+            >
+          </li>
+          <li>
+            <a href="../public/services.html" id="services" title="services"
+              ><i class="fa-solid fa-gears"></i
+              ><span class="labels">services</span></a
+            >
+          </li>
+          <li>
+            <a href="../public/booking.html" id="hiring" title="booking"
+              ><i class="fa-solid fa-receipt"></i
+              ><span class="labels">Booking</span></a
+            >
+          </li>
+          <li style="display: block">
+            <a href="/views/notification.html" title="response" id="response"
+              ><i class="fa-solid fa-bolt"></i
+              ><span class="labels">response</span></a
+            >
+          </li>
+          <li>
+            <a href="../public/chats.html" id="chats" title="chatsbox"
+              ><i class="fa-solid fa-bell"></i
+              ><span class="labels">notification</span></a
+            >
+          </li>
+          <li>
+            <a href="../public/requests.html" title="requests" id="request"
+              ><i class="fa-solid fa-clipboard-list"></i
+              ><span class="labels">requests</span></a
+            >
+          </li>
+          <li id="admindash">
+            <a href="dashboard.html" title="dashboard" id="dashboard"
+              ><i class="fa-solid fa-chart-line"></i
+              ><span class="labels">dashboard</span></a
+            >
+          </li>
+        </ul>
+      </nav>
+      <div class="signFeature">
+        <div class="profile" id="profile"></div>
+        <button id="loginBtn">
+          <a href="../public/login.html">Log <span id="loginPart">In</span></a>
+        </button>
+      </div>
+    </header>
+    <section class="desktopNotification">
+      <div class="usernameHeader">
+        <h4 id="chatPartnerName">*_*_*_*_*_*</h4>
+      </div>
+      <div class="Desktop-notificationContainer">
+        <div class="sideChats">
+          <div class="recentHeader">
+            <h3>Recent Chats</h3>
+          </div>
+          <div class="recentChats">
+            <!-- this will show chat wrappers for recent chats -->
+          </div>
+        </div>
+
+        <div class="ResponseNotificationContainer">
+          <div class="chatResponseSection"></div>
+
+          <div class="textResponseSection" id="textResponse">
+            <div class="responds" id="inputArea">
+              <textarea
+                id="messageArea"
+                placeholder="Type a message..."
+              ></textarea>
+            </div>
+            <div class="sendBtn" id="sendBtn">Send</div>
+          </div>
+        </div>
+        <div class="activeNotes">
+          <div class="recentHeader">
+            <h3>Notifications</h3>
+          </div>
+          <div class="activeNotes-container"></div>
+        </div>
+      </div>
+    </section>
+    <footer>
+      <div class="footerContent">
+        <div class="social">
+          <h4>social</h4>
+          <a href="#"><i class="fab fa-tiktok"></i>chproduction</a><br />
+          <a href="#"><i class="fab fa-instagram"></i>chproduction</a><br />
+          <a href="#"><i class="fab fa-youtube"></i>chproduction</a><br />
+          <a href="#"><i class="fab fa-facebook"></i>chproduction</a>
+        </div>
+        <div class="contact">
+          <h4>Contact Us</h4>
+          <Call:i class="fas fa-phone"></Call:i
+          ><span id="contactnumber">0793636325</span><br />
+          <i class="fas fa-fax"></i><span id="contactfax">+254793636325</span
+          ><br />
+          <i class="fas fa-envelope"></i
+          ><span id="contactemail">chprod@gmail.com</span><br />
+        </div>
+        <div class="helpcenter">
+          <h4>help & Feedback</h4>
+          <a href="feedback.html">Feedback</a><br />
+          <a href="customercare.html">Customer Care</a><br />
+          <a href="Help.html">Help</a>
+        </div>
+        <div class="quicklinks">
+          <h4>Quick Links</h4>
+          <a href="../public/index.html">home</a><br />
+          <a href="../public/chats.html">Notification</a><br />
+          <a href="../public/requests.html">requests</a><br />
+          <a href="../public/services.html">services</a><br />
+          <a href="../public/booking.html">booking</a><br />
+          <a href="../public/films.html">films</a><br />
+        </div>
+      </div>
+      <div class="copyrights"></div>
+      <div class="creator">
+        <sub id="creator">Created By<br />Outcast DHO</sub>
+      </div>
+    </footer>
+    <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
+    <script src="../public/main.js"></script>
+    <script src="../public/profile.js"></script>
+    <script src="nott.js"></script>
+    <script>
+      const API_URL = "http://localhost:5000";
+
+      const searchBtn = document.getElementById("searchBtn");
+      const searchInput = document.getElementById("searchInput");
+      const resultDisplay = document.getElementById("resultDisplay");
+      const searchbar = document.getElementById("searchContainer");
+      const notificationWrapp = document.querySelector(".recentChats");
+
+      const sendBtn = document.getElementById("sendBtn");
+      const messageArea = document.getElementById("messageArea");
+
+      const urlParams = new URLSearchParams(window.location.search);
+      const partnerId = urlParams.get("uuid");
+
+      let roomId; // must be set AFTER myId is known
+
+      async function getMyId() {
+        let myId = sessionStorage.getItem("myId");
+        if (myId) return myId;
+
+        const token = sessionStorage.getItem("token");
+        const response = await fetch(`${API_URL}/api/findMyId`, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        });
+
+        if (!response.ok) {
+          throw new Error("Unable to load myId");
+        }
+
+        const data = await response.json();
+        sessionStorage.setItem("myId", data.senderId);
+        return data.senderId;
+      }
+
+      async function findUser() {
+        const token = sessionStorage.getItem("token");
+        const query = searchInput.value.trim();
+
+        if (!query) {
+          alert("You cannot search empty field.");
+          return;
+        }
+
+        resultDisplay.innerHTML = "Searching...";
+
+        try {
+          const response = await fetch(`${API_URL}/api/searchpartner`, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`,
+            },
+            body: JSON.stringify({ query }),
+          });
+
+          const data = await response.json();
+
+          if (response.ok) {
+            window.location = `../public/message.html?uuid=${encodeURIComponent(
+              data.userId,
+            )}&username=${encodeURIComponent(data.username)}`;
+          } else {
+            resultDisplay.innerHTML = `<p style="color:red;">${
+              data.message || "Search failed."
+            }</p>`;
+          }
+        } catch (error) {
+          console.error("Network error", error);
+        }
+      }
+
+      /* =========================
+   CHAT LIST (LEFT PANEL)
+========================= */
+      async function loadWrappers(endpoint, emptyText) {
+        const myId = await getMyId();
+        const token = sessionStorage.getItem("token");
+
+        try {
+          const response = await fetch(`${API_URL}${endpoint}`, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`,
+            },
+            body: JSON.stringify({ myId }),
+          });
+
+          if (!response.ok) {
+            notificationWrapp.innerHTML = emptyText;
+            return;
+          }
+
+          const data = await response.json();
+          const chats = data.chats || [];
+          renderNotifications(chats, emptyText);
+        } catch (error) {
+          console.error("Network error", error);
+          notificationWrapp.innerHTML = emptyText;
+        }
+      }
+
+      function renderNotifications(chats, emptyText) {
+        notificationWrapp.innerHTML = "";
+
+        if (!chats.length) {
+          notificationWrapp.innerHTML = emptyText;
+          return;
+        }
+
+        const latestByPartner = {};
+
+        chats.forEach((chat) => {
+          const key = chat.otherUserId;
+
+          const current = latestByPartner[key];
+          if (
+            !current ||
+            new Date(chat.CreatedAt) > new Date(current.CreatedAt)
+          ) {
+            latestByPartner[key] = chat;
+          }
+        });
+
+        Object.values(latestByPartner).forEach((chat) => {
+          const chatWrapper = document.createElement("div");
+          chatWrapper.classList.add("chatWrapper");
+
+          chatWrapper.innerHTML = `
+      <div>
+        <h4>${chat.username || "User"}</h4>
+        <p>${chat.message || chat.note || ""}</p>
+      </div>
+    `;
+
+          chatWrapper.addEventListener("click", () => {
+            window.location.href = `../public/message.html?uuid=${encodeURIComponent(
+              chat.otherUserId,
+            )}&username=${encodeURIComponent(chat.username)}`;
+          });
+
+          notificationWrapp.appendChild(chatWrapper);
+        });
+      }
+
+      async function findIndividualNotification() {
+        await loadWrappers(
+          "/api/findIndividualNotifications",
+          "No notifications yet.",
+        );
+      }
+
+      async function findIndividualMessages() {
+        await loadWrappers("/api/findMessageWrapper", "No messages yet.");
+      }
+
+      /* =========================
+   SOCKET EVENTS
+========================= */
+      socket.on("receive_message", async (data) => {
+        const myId = await getMyId();
+
+        const msg = document.createElement("div");
+        msg.classList.add("message");
+
+        if (data.sender === myId) {
+          msg.classList.add("sent");
+        } else {
+          msg.classList.add("received");
+        }
+
+        msg.textContent = data.message;
+
+        const chatBox = document.querySelector(".chatResponseSection");
+        chatBox.appendChild(msg);
+
+        chatBox.scrollTop = chatBox.scrollHeight;
+      });
+
+      /* =========================
+   SEND MESSAGE
+========================= */
+      sendBtn.addEventListener("click", async () => {
+        const message = messageArea.value.trim();
+        const myId = await getMyId();
+
+        if (!message || !roomId) return;
+
+        socket.emit("send_message", {
+          room: roomId,
+          sender: myId,
+          receiver: partnerId,
+          message,
+        });
+
+        messageArea.value = "";
+      });
+
+      /* =========================
+   INIT (VERY IMPORTANT)
+========================= */
+      document.addEventListener("DOMContentLoaded", async () => {
+        const myId = await getMyId();
+
+        // ✅ NOW we can safely create roomId
+        if (partnerId) {
+          roomId = [myId, partnerId].sort().join("_");
+
+          // ✅ join room AFTER myId exists
+          socket.emit("join_room", roomId);
+        }
+
+        await findIndividualNotification();
+      });
+    </script>
+  </body>
+</html>

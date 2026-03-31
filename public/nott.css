@@ -1,0 +1,188 @@
+.chitchatSection{
+    display: block;
+}
+
+.Desktop-notificationContainer {
+    display: grid;
+    grid-template-columns: 30% 40% 30%;
+    height: 100vh;
+    gap: 1em;
+    padding: 1em;
+}
+
+/* Left & Right panels */
+.sideChats,
+.activeNotes {
+    background: white;
+    overflow-y: auto;
+    height: 90vh;
+    border-radius: 1em;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5), -1px -1px 1px rgba(0, 0, 0, 0.5);
+    flex-shrink: 0;
+    
+}
+
+.activeNotes{
+    width: 90%;
+}
+
+/* Middle container */
+.ResponseNotificationContainer {
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    width: 100%;
+    height: 90vh;
+    flex-shrink: 0;
+}
+
+/* Chat messages area */
+.chatResponseSection {
+    flex: 1;
+    padding: 10px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Message bubbles */
+.bubble {
+    max-width: 70%;
+    padding: 10px 14px;
+    border-radius: 12px;
+    font-size: 14px;
+    word-wrap: break-word;
+}
+
+.sent {
+    align-self: flex-end;
+    background: rgb(19,28,41);
+    color: white;
+    border-bottom-right-radius: 2px;
+}
+
+.received {
+    align-self: flex-start;
+    background: rgb(98, 100, 117);
+    color: white;
+    border-bottom-left-radius: 2px;
+}
+
+/* Input section */
+.textResponseSection {
+    display: grid;
+    grid-template-columns: 70% 30%;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: white;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    border-top: 1px solid #eee;
+    z-index: 10;
+
+}
+
+.responds {
+    width: 80%;
+}
+
+#messageArea {
+    width: 100%;
+    height: 40px;
+    resize: none;
+    padding: 8px;
+}
+
+/* Send button */
+.sendBtn {
+    padding: 10px 15px;
+    background: #007bff;
+    color: white;
+    cursor: pointer;
+    border-radius: 6px;
+}
+
+.recentHeader {
+    background: #ddd;
+    width: 100%;
+    height: 3em;
+    padding: 0.625em;
+    text-align: center;
+    z-index: 100;
+    
+}
+#chatPartnerName h4 sub{
+    color: green;
+    font-size: 1em;
+}
+
+.user-Notified{
+    color: white;
+    text-shadow: 1px 1px 0 green;
+    align-self: center;
+}
+
+.activeNotes .received{
+    margin: 0.625em 0.225em;
+    min-height: 5em;
+    align-self: flex-end;
+}
+.activeNotes-container{
+    overflow-y: auto;
+}
+.activeNotes::-webkit-scrollbar{
+    display: none;
+}
+
+
+@media (max-width: 767px) {
+    
+    .Desktop-notificationContainer {
+        display: grid;
+        grid-template-columns: 1fr;
+        width: 100%;
+        height: 95vh;
+        margin-top: 2.2em;
+        padding: 0;
+    }
+
+    .sideChats,
+    .activeNotes {
+        display: none;
+    }
+
+    .ResponseNotificationContainer {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 90vh;
+    }
+
+    .chatResponseSection {
+        flex: 1;
+        overflow-y: auto;
+        padding-bottom: 70px;
+    }
+
+    .textResponseSection {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background: white;
+        z-index: 1000;
+        padding: 10px;
+        border-top: 1px solid #ddd;
+    }
+    .usernameHeader{
+        margin-top: 0;
+    }
+    .user-Notified{
+        font-size: smaller;
+    }
+}

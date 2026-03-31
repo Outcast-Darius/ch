@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="color-scheme" content="light dark">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>authentication/login</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <section class="loginSection">
+    <form action="" method="post" class="loginForm">
+        <div class="signInDescription">
+            <h4>Hello there?! <br>Welcome To CH Films</h4>
+            <div class="signInLogo">
+
+            </div>
+            <span id="motto">...what you yern for.</span>
+            <div class="signInDesc">
+                <h5>Enter your email and password<br> to access your account.</h5>
+            </div>
+            
+        </div>
+        <div class="loginCredentials">
+            <fieldset>
+                <div class="errorbody" id="errorbody">⚠️</div>
+                <fieldset>
+                    <legend>email<sup>*</sup></legend>
+                    <input type="email" name="email" id="LoginEmail" placeholder="e.g.johndoe@gmail.com">
+                </fieldset>
+                <fieldset>
+                    <legend>password<sup>*</sup></legend>
+                    <input type="password" name="password" id="LoginPassword" ondblclick="show()" maxlength="16" placeholder="****************"><input type="checkbox" name="password" id="pass" onclick="if(pass.checked){LoginPassword.type='text'}else{LoginPassword.type='password'}">
+                </fieldset>  
+                <p id="forgot"><a href="forgot.html">forgot password</a></p>              
+            </fieldset>
+            <button id="signInbtn">Log in</button><br>
+            Don't have an account?<a href="signup.html">Create Account</a><br>
+            <a href="index.html" id="backlink">home</a>
+        </div>
+        
+    </form>
+    </section>
+
+<script src="main.js"></script>
+</body>
+</html>

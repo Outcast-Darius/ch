@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light dark" />
+    <title>notfications</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+    />
+  </head>
+
+  <body>
+    <header>
+      <div class="logo"></div>
+      <nav>
+        <ul>
+          <li>
+            <a href="index.html" id="home" title="home"
+              ><i class="fa-solid fa-home"></i
+              ><span class="labels">home</span></a
+            >
+          </li>
+          <li>
+            <a href="services.html" id="services" title="services"
+              ><i class="fa-solid fa-gears"></i
+              ><span class="labels">services</span></a
+            >
+          </li>
+          <li>
+            <a href="booking.html" id="hiring" title="booking"
+              ><i class="fa-solid fa-receipt"></i
+              ><span class="labels">Booking</span></a
+            >
+          </li>
+          <li>
+            <a href="/views/notification.html" title="response" id="response"
+              ><i class="fa-solid fa-bolt"></i
+              ><span class="labels">response</span></a
+            >
+          </li>
+          <li>
+            <a href="chats.html" id="chats" title="chatsbox"
+              ><i class="fa-solid fa-bell"></i
+              ><span class="labels">notification</span></a
+            >
+          </li>
+          <li>
+            <a href="requests.html" title="requests" id="request"
+              ><i class="fa-solid fa-clipboard-list"></i
+              ><span class="labels">requests</span></a
+            >
+          </li>
+          <li id="admindash">
+            <a href="DASHBOARD.HTML" title="dashboard" id="dashboard"
+              ><i class="fa-solid fa-chart-line"></i
+              ><span class="labels">dashboard</span></a
+            >
+          </li>
+        </ul>
+      </nav>
+      <div class="signFeature">
+        <div class="profile" id="profile"></div>
+        <button id="loginBtn">
+          <a href="login.html">Log <span id="loginPart">In</span></a>
+        </button>
+      </div>
+    </header>
+    <section class="side-panel" id="side-panel">
+      <div class="notificationContainer">
+        <h2>Recent Chats</h2>
+        <div id="activeChatsWrapper"></div>
+      </div>
+
+      <div class="search-container" id="searchContainer">
+        <input
+          type="text"
+          id="searchInput"
+          placeholder="Search new friends..."
+        />
+        <button id="searchBtn">Start Chat</button>
+        <div id="resultDisplay"></div>
+      </div>
+      <div id="chatInitiator">New Chat</div>
+    </section>
+    <footer>
+      <div class="footerContent">
+        <div class="social">
+          <h4>social</h4>
+          <a href="#"><i class="fab fa-tiktok"></i>chproduction</a><br />
+          <a href="#"><i class="fab fa-instagram"></i>chproduction</a><br />
+          <a href="#"><i class="fab fa-youtube"></i>chproduction</a><br />
+          <a href="#"><i class="fab fa-facebook"></i>chproduction</a>
+        </div>
+        <div class="contact">
+          <h4>Contact Us</h4>
+          <Call:i class="fas fa-phone"></Call:i
+          ><span id="contactnumber">0793636325</span><br />
+          <i class="fas fa-fax"></i><span id="contactfax">+254793636325</span
+          ><br />
+          <i class="fas fa-envelope"></i
+          ><span id="contactemail">chprod@gmail.com</span><br />
+        </div>
+        <div class="helpcenter">
+          <h4>help & Feedback</h4>
+          <a href="feedback.html">Feedback</a><br />
+          <a href="customercare.html">Customer Care</a><br />
+          <a href="Help.html">Help</a>
+        </div>
+        <div class="quicklinks">
+          <h4>Quick Links</h4>
+          <a href="index.html">home</a><br />
+          <a href="chats.html">Notification</a><br />
+          <a href="requests.html">requests</a><br />
+          <a href="services.html">services</a><br />
+          <a href="booking.html">booking</a><br />
+          <a href="films.html">films</a><br />
+        </div>
+      </div>
+      <div class="copyrights"></div>
+      <div class="creator">
+        <sub id="creator">Created By<br />Outcast DHO</sub>
+      </div>
+    </footer>
+    <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
+    <script src="main.js"></script>
+    <script src="profile.js"></script>
+
+    <script>
+      const API_URL = "http://localhost:5000";
+      const socket = io(API_URL);
+
+      const searchBtn = document.getElementById("searchBtn");
+      const searchInput = document.getElementById("searchInput");
+      const resultDisplay = document.getElementById("resultDisplay");
+      const searchbar = document.getElementById("searchContainer");
+      const notificationWrapp = document.querySelector("#activeChatsWrapper");
+
+      async function getMyId() {
+        let myId = sessionStorage.getItem("myId");
+        if (myId) return myId;
+
+        const token = sessionStorage.getItem("token");
+        const response = await fetch(`${API_URL}/api/findMyId`, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        });
+
+        if (!response.ok) {
+          throw new Error("Unable to load myId");
+        }
+
+        const data = await response.json();
+        sessionStorage.setItem("myId", data.senderId);
+        return data.senderId;
+      }
+
+      async function findUser() {
+        const token = sessionStorage.getItem("token");
+        const query = searchInput.value.trim();
+
+        if (!query) {
+          alert("You cannot search empty field.");
+          return;
+        }
+
+        resultDisplay.innerHTML = "Searching...";
+
+        try {
+          const response = await fetch(`${API_URL}/api/searchpartner`, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`,
+            },
+            body: JSON.stringify({ query }),
+          });
+
+          const data = await response.json();
+
+          if (response.ok) {
+            window.location = `message.html?uuid=${encodeURIComponent(
+              data.userId,
+            )}&username=${encodeURIComponent(data.username)}`;
+          } else {
+            resultDisplay.innerHTML = `<p style="color:red;">${data.message || "Search failed."}</p>`;
+          }
+        } catch (error) {
+          console.error("Network error", error);
+        }
+      }
+
+      searchBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        findUser();
+      });
+
+      document.getElementById("chatInitiator").addEventListener("click", () => {
+        searchbar.style.display = "block";
+      });
+
+      async function loadWrappers(endpoint, emptyText) {
+        const myId = await getMyId();
+        const token = sessionStorage.getItem("token");
+
+        try {
+          const response = await fetch(`${API_URL}${endpoint}`, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`,
+            },
+            body: JSON.stringify({ myId }),
+          });
+
+          if (!response.ok) {
+            notificationWrapp.innerHTML = emptyText;
+            return;
+          }
+
+          const data = await response.json();
+          const chats = data.chats || [];
+          renderNotifications(chats, emptyText);
+        } catch (error) {
+          console.error("Network error", error);
+          notificationWrapp.innerHTML = emptyText;
+        }
+      }
+
+      function renderNotifications(chats, emptyText) {
+        notificationWrapp.innerHTML = "";
+
+        if (!chats.length) {
+          notificationWrapp.innerHTML = emptyText;
+          return;
+        }
+
+        const latestByPartner = {};
+
+        chats.forEach((chat) => {
+          const key = chat.otherUserId;
+
+          const current = latestByPartner[key];
+          if (
+            !current ||
+            new Date(chat.CreatedAt) > new Date(current.CreatedAt)
+          ) {
+            latestByPartner[key] = chat;
+          }
+        });
+
+        Object.values(latestByPartner).forEach((chat) => {
+          const chatWrapper = document.createElement("div");
+          chatWrapper.classList.add("chatWrapper");
+
+          chatWrapper.innerHTML = `
+      <div>
+        <h4>${chat.username || "User"}</h4>
+        <p>${chat.message || chat.note || ""}</p>
+      </div>
+    `;
+
+          chatWrapper.addEventListener("click", () => {
+            window.location.href = `message.html?uuid=${encodeURIComponent(
+              chat.otherUserId,
+            )}&username=${encodeURIComponent(chat.username)}`;
+          });
+
+          notificationWrapp.appendChild(chatWrapper);
+        });
+      }
+
+      async function findIndividualNotification() {
+        await loadWrappers(
+          "/api/findIndividualNotifications",
+          "No notifications yet.",
+        );
+      }
+
+      async function findIndividualMessages() {
+        await loadWrappers("/api/findMessageWrapper", "No messages yet.");
+      }
+
+      document.addEventListener("DOMContentLoaded", async () => {
+        await getMyId();
+        await findIndividualNotification();
+      });
+
+      
+    </script>
+  </body>
+</html>

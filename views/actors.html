@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>actors</title>
+    <link rel="stylesheet" href="/public/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+    />
+  </head>
+
+  <body>
+    <header>
+      <div class="logo"></div>
+      <nav>
+        <ul>
+          <li>
+            <a href="/public/index.html" id="home" title="home"
+              ><i class="fa-solid fa-home"></i
+              ><span class="labels">home</span></a
+            >
+          </li>
+          <li>
+            <a href="/public/services.html" id="services" title="services"
+              ><i class="fa-solid fa-gears"></i
+              ><span class="labels">services</span></a
+            >
+          </li>
+          <li>
+            <a href="/public/booking.html" id="hiring" title="booking"
+              ><i class="fa-solid fa-receipt"></i
+              ><span class="labels">Booking</span></a
+            >
+          </li>
+          <li>
+            <a href="/views/notification.html" title="response" id="response"
+              ><i class="fa-solid fa-bolt"></i
+              ><span class="labels">response</span></a
+            >
+          </li>
+          <li>
+            <a href="/public/chats.html" id="chats" title="chatsbox"
+              ><i class="fa-solid fa-bell"></i
+              ><span class="labels">notification</span></a
+            >
+          </li>
+          <li>
+            <a href="/public/requests.html" title="requests" id="request"
+              ><i class="fa-solid fa-clipboard-list"></i
+              ><span class="labels">requests</span></a
+            >
+          </li>
+          <li id="admindash">
+            <a href="/views/dashboard.html" title="dashboard" id="dashboard"
+              ><i class="fa-solid fa-chart-line"></i
+              ><span class="labels">dashboard</span></a
+            >
+          </li>
+        </ul>
+      </nav>
+      <div class="signFeature">
+        <div class="profile" id="profile"></div>
+        <button id="loginBtn">
+          <a href="/public/login.html">Log <span id="loginPart">In</span></a>
+        </button>
+      </div>
+    </header>
+
+    <div class="editModal" id="editModal">
+      <div class="modalContent" id="modalContent">
+        <p id="actName">
+          Actor Name:
+          <span id="displayedName">DHO</span>
+        </p>
+        <textarea name="actorWords" id="displayedWords"> </textarea>
+        <button id="saveEdit">Save Changes</button>
+      </div>
+    </div>
+
+    <div class="actorsModal" id="actorsModal">
+      <div class="modal-content" id="modal-content">
+        <form action="" method="post" id="actorsForm">
+          <fieldset>
+            <legend>Actor Name</legend>
+            <input type="text" name="" id="actorName" />
+          </fieldset>
+          <fieldset>
+            <legend>Alias Name</legend>
+            <input type="text" name="" id="aliasName" />
+          </fieldset>
+          <fieldset>
+            <legend>Role</legend>
+            <input type="text" name="" id="actorRole" />
+          </fieldset>
+          <fieldset>
+            <legend>Playtime</legend>
+            <input type="text" name="" id="playTime" />
+          </fieldset>
+          <fieldset>
+            <legend>Words</legend>
+            <textarea name="" id="actorWords"></textarea>
+          </fieldset>
+          <button id="addActor">ADD</button>
+        </form>
+      </div>
+    </div>
+
+    <section class="actorsSection">
+      <button class="add-characters" id="add-characters">Add Character</button>
+
+      <div class="actorBody" id="actorBody"></div>
+    </section>
+
+    <footer>
+      <div class="footerContent">
+        <div class="social">
+          <h4>social</h4>
+          <a href="#"><i class="fab fa-tiktok"></i>chproduction</a><br />
+          <a href="#"><i class="fab fa-instagram"></i>chproduction</a><br />
+          <a href="#"><i class="fab fa-youtube"></i>chproduction</a><br />
+          <a href="#"><i class="fab fa-facebook"></i>chproduction</a>
+        </div>
+        <div class="contact">
+          <h4>Contact Us</h4>
+          <Call:i class="fas fa-phone"></Call:i
+          ><span id="contactnumber">0793636325</span><br />
+          <i class="fas fa-fax"></i><span id="contactfax">+254793636325</span
+          ><br />
+          <i class="fas fa-envelope"></i
+          ><span id="contactemail">chprod@gmail.com</span><br />
+        </div>
+        <div class="helpcenter">
+          <h4>help & Feedback</h4>
+          <a href="feedback.html">Feedback</a><br />
+          <a href="customercare.html">Customer Care</a><br />
+          <a href="Help.html">Help</a>
+        </div>
+        <div class="quicklinks">
+          <h4>Quick Links</h4>
+          <a href="index.html">home</a><br />
+          <a href="chats.html">Notification</a><br />
+          <a href="requests.html">requests</a><br />
+          <a href="services.html">services</a><br />
+          <a href="booking.html">booking</a><br />
+          <a href="films.html">films</a><br />
+        </div>
+      </div>
+      <div class="copyrights"></div>
+      <div class="creator">
+        <sub id="creator">Created By<br />Outcast DHO</sub>
+      </div>
+    </footer>
+    <script src="/public/main.js"></script>
+    <script src="/public/profile.js"></script>
+    <!--<script src="/public/user.js"></script>-->
+    <script src="actor.js"></script>
+  </body>
+</html>

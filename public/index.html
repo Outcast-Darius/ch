@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light dark" />
+    <title>homepage</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+    />
+  </head>
+
+  <body>
+    <header>
+      <div class="logo"></div>
+      <nav>
+        <ul>
+          <li>
+            <a href="index.html" id="home" title="home"
+              ><i class="fa-solid fa-home"></i
+              ><span class="labels">home</span></a
+            >
+          </li>
+          <li>
+            <a href="services.html" id="services" title="services"
+              ><i class="fa-solid fa-gears"></i
+              ><span class="labels">services</span></a
+            >
+          </li>
+          <li>
+            <a href="booking.html" id="hiring" title="booking"
+              ><i class="fa-solid fa-receipt"></i
+              ><span class="labels">Booking</span></a
+            >
+          </li>
+          <li id="adminres">
+            <a href="/views/notification.html" title="response" id="response"
+              ><i class="fa-solid fa-bolt"></i
+              ><span class="labels">response</span></a
+            >
+          </li>
+          <li>
+            <a href="chats.html" id="chats" title="chatsbox"
+              ><i class="fa-solid fa-bell"></i
+              ><span class="labels">notification</span></a
+            >
+          </li>
+          <li>
+            <a href="requests.html" title="requests" id="request"
+              ><i class="fa-solid fa-clipboard-list"></i
+              ><span class="labels">requests</span></a
+            >
+          </li>
+          <li id="adminheaddash">
+            <a href="/views/dashboard.html" title="dashboard" id="dashboard"
+              ><i class="fa-solid fa-chart-line"></i
+              ><span class="labels">dashboard</span></a
+            >
+          </li>
+        </ul>
+      </nav>
+      <div class="signFeature">
+        <div class="profile" id="profile"></div>
+        <button id="loginBtn">
+          <a href="login.html">Log<span id="loginPart">In</span> </a>
+        </button>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div class="animationContainer">
+        <div class="animations">
+          <div class="slides"><img src="../posters/poster-1773328553276.jfif" alt="" /></div>
+          <div class="slides"><img src="../posters/poster-1771827297262.png" alt="" /></div>
+          <div class="slides"><img src="../posters/poster-1771932341152.png" alt="" /></div>
+          <div class="slides"><img src="../posters/poster-1774521322890.jpg" alt="" /></div>
+        </div>
+        <div class="carouselContainer">
+          <button class="carousel active" onclick="currentSlide(1)"></button>
+          <button class="carousel" onclick="currentSlide(2)"></button>
+          <button class="carousel" onclick="currentSlide(3)"></button>
+          <button class="carousel" onclick="currentSlide(4)"></button>
+        </div>
+      </div>
+      <div class="upcomings">
+        <div class="Poster" id="eventPoster">
+          <!-- poster will be filled automatically by js injection -->
+        </div>
+        <p id="eventTitle">Next</p>
+        <h2 id="eventDate">17/03/2026</h2>
+        <h2 id="eventTime">2:00 pm</h2>
+        <h3 class="eventVenue">CH Cinema</h3>
+        <h3 id="dontMiss">Don't Miss!</h3>
+      </div>
+
+      <div class="tradeof" id="tradeof">
+        <div class="textsellout">
+          <h2>CH FILMS PRODUCTION</h2>
+          <p>
+            Film production and perfomance has never been this easy,<br>
+            in CH PRODUCTIONS we bring perfomance live and right at your eye range with as much custom perfomance 
+            as possible to your convinience.
+            <br />
+            Want a perfomance for your function or event?<br />
+            Make your booking now...
+          </p>
+          <button class="booknow">
+            <a href="booking.html"
+              >Book Now <i class="fa-solid fa-arrow-right"></i
+            ></a>
+          </button>
+        </div>
+        <div class="imagebounce">
+          <!--we animate background for nice and easy animation-->
+        </div>
+      </div>
+
+      <div class="mainServiceContainer">
+        <div class="mainService">
+          <p id="thoughtHead">We bridge <br> Thoughts Into <br> A Play</p>
+        </div>
+      </div>
+
+      <div class="perfomanceAnimations">
+        <div class="person1">
+          <div class="personImage">
+            <img src="../posters/poster-1771827297262.png" alt="" />
+          </div>
+          <div class="speech1">
+            <h5>Hey there?</h5>
+          </div>
+          <p id="part1">Lets have a</p>
+        </div>
+        <div class="gap1"></div>
+        <div class="person2">
+          <div class="personImage">
+            <img src="../posters/poster-1771826931537.png" alt="" />
+          </div>
+          <div class="speech2">
+            <h5>Hey too</h5>
+          </div>
+          <p id="part2">play together</p>
+        </div>
+      </div>
+
+      <div class="aboutUs">
+        <!---->
+        <div class="whoWeAre">
+          <h3 id="whoweare">Who are we?</h3>
+        </div>
+
+        <div class="whatWeDo">
+          <h3 id="whatWeDo">What We Do</h3>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="footerContent">
+        <div class="social">
+          <h4>social</h4>
+          <a href="#"><i class="fab fa-tiktok"></i>chproduction</a><br />
+          <a href="#"><i class="fab fa-instagram"></i>chproduction</a><br />
+          <a href="#"><i class="fab fa-youtube"></i>chproduction</a><br />
+          <a href="#"><i class="fab fa-facebook"></i>chproduction</a>
+        </div>
+        <div class="contact">
+          <h4>Contact Us</h4>
+          <Call:i class="fas fa-phone"></Call:i
+          ><span id="contactnumber">0793636325</span><br />
+          <i class="fas fa-fax"></i><span id="contactfax">+254793636325</span
+          ><br />
+          <i class="fas fa-envelope"></i
+          ><span id="contactemail">chprod@gmail.com</span><br />
+        </div>
+        <div class="helpcenter">
+          <h4>help & Feedback</h4>
+          <a href="feedback.html">Feedback</a><br />
+          <a href="customercare.html">Customer Care</a><br />
+          <a href="Help.html">Help</a>
+        </div>
+        <div class="quicklinks">
+          <h4>Quick Links</h4>
+          <a href="index.html">home</a><br />
+          <a href="chats.html">Notification</a><br />
+          <a href="requests.html">requests</a><br />
+          <a href="services.html">services</a><br />
+          <a href="booking.html">booking</a><br />
+          <a href="films.html">films</a><br />
+          <a id="admindash" href="../views/dashboard.html">Dashboard</a>
+        </div>
+      </div>
+      <div class="copyrights"></div>
+      <div class="creator">
+        <sub id="creator">Created By<br />Outcast DHO</sub>
+      </div>
+    </footer>
+    <script src="main.js"></script>
+    <script src="profile.js"></script>
+    <script>
+      const APPI = "http://localhost:5000";
+      async function fetchPoster() {
+        const upcoming = document.querySelector(".upcomings");
+
+        try {
+          const response = await fetch(`${APPI}/api/getEventPoster`, {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${sessionStorage.getItem("token")}`,
+            },
+          });
+
+          const result = await response.json();
+
+          if (result.id || result.data) {
+            const Data = result;
+            upcoming.style.display = "block";
+            fillPoster(Data);
+          } else {
+            upcoming.style.display = "none";
+          }
+        } catch (error) {
+          console.error("Error fetching poster:", error);
+          upcoming.style.display = "none";
+        }
+      }
+
+      function fillPoster(data) {
+        // Select elements once
+        const eDate = document.getElementById("eventDate");
+        const eTitle = document.getElementById("eventTitle");
+        const eTime = document.getElementById("eventTime");
+        const eVenue = document.querySelector(".eventVenue");
+        const Poster = document.getElementById("eventPoster");
+
+        if (data.eventDate) {
+          const dateObj = new Date(data.eventDate);
+
+          eDate.textContent = dateObj.toLocaleDateString(undefined, {
+            weekday: "short",
+            year: "numeric",
+            month: "short",
+            day: "numeric",
+          });
+        }
+
+        eTitle.textContent = data.eventTitle || "Untitled ";
+        eTime.textContent = data.eventTime || "TBA";
+        eVenue.textContent = "VENUE " + data.eventVenue;
+        Poster.style.backgroundImage = `url("${data.eventPhoto}")`;
+
+        if (data.eventPhoto) {
+          Poster.style.backgroundSize = "cover";
+          Poster.style.backgroundPosition = "center";
+        }
+      }
+
+      document.addEventListener("DOMContentLoaded", fetchPoster);
+    </script>
+  </body>
+</html>

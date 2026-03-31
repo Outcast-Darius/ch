@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="light dark">
+    <title>account creation</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    
+    <section class="signupSection">
+        <form action="" method="post" class="signUpForm">
+            <div class="signupContainer">
+                <div class="signupDescription">
+                    <h5>WELCOME TO CHA FILMS</h5>
+                    <div class="signLogo">
+
+                    </div>
+                    <span id="motto">...what you yern for.</span>
+                    <div class="signupDesc">
+                        Fill in the fields below to create your CHA account
+                    </div>
+
+                </div>
+                <div class="signupCredentials">
+                    <fieldset>
+                        <div class="errorbody" id="errorbody"></div>
+                        <fieldset>
+                            <legend>email<sup>*</sup></legend>
+                            <input type="email" name="email" id="email" placeholder="e.g.johndoe@gmail.com">
+                        </fieldset>
+                        <fieldset>
+                            <legend>username<sup>*</sup></legend>
+                            <input type="text" name="username" id="username" placeholder="e.g.john doe">
+                        </fieldset>
+                        <fieldset>
+                            <legend>phone number<sup>*</sup></legend>
+                            <input type="tel" name="phone number" id="phoneNumber" placeholder="+254 xx xxxx xxxx">
+                        </fieldset>
+                        <fieldset>
+                            <legend>password<sup>*</sup></legend>
+                            <input type="password" name="password" id="password1" ondblclick="show1()"
+                                placeholder="****************"><input type="checkbox" name="pass" id="pass1"
+                                onclick="if(this.checked){password1.type='text'}else{password1.type='password'}">
+                            <sub id="passwordStrength"></sub>
+                        </fieldset>
+                        <fieldset>
+                            <legend>confirm password<sup>*</sup></legend>
+                            <input type="password" name="password" id="passwordConfirm" ondblclick="show()"
+                                placeholder="****************"><input type="checkbox" name="pass" id="pass2"
+                                onclick="if(this.checked){passwordConfirm.type='text'}else{passwordConfirm.type='password'}">
+                            <sub id="passwordMatch"></sub>
+                        </fieldset>
+
+                    </fieldset>
+                    <button id="signupbtn">Create Account</button><br>
+                    <div id="alternative">Alredy have account?<a href="login.html">LOGIN</a></div><br>
+                </div>
+
+                <a href="index.html" id="backLink">home</a>
+            </div>
+        </form>
+    </section>
+    <script src="main.js"></script>
+</body>
+
+</html>

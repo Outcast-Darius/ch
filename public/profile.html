@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="light dark">
+    <title>account center/profile</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+</head>
+
+<body>
+    <header>
+        <div class="logo"></div>
+        <nav>
+            <ul>
+                <li><a href="index.html" id="home" title="home"><i class="fa-solid fa-home"></i><span
+                            class="labels">home</span></a></li>
+                <li><a href="services.html" id="services" title="services"><i class="fa-solid fa-gears"></i><span
+                            class="labels">services</span></a></li>
+                <li><a href="booking.html" id="hiring" title="booking"><i class="fa-solid fa-receipt"></i><span
+                            class="labels">Booking</span></a></li>
+                <li><a href="/views/notification.html" title="response" id="response"><i
+                            class="fa-solid fa-bolt"></i><span class="labels">response</span></a></li>
+                <li><a href="chats.html" id="chats" title="chatsbox"><i class="fa-solid fa-bell"></i><span
+                            class="labels">notification</span></a></li>
+                <li><a href="requests.html" title="requests" id="request"><i
+                            class="fa-solid fa-clipboard-list"></i><span class="labels">requests</span></a></li>
+                <li id="admindash"><a href="/views/dashboard.html" title="dashboard" id="dashboard"><i
+                            class="fa-solid fa-chart-line"></i><span class="labels">dashboard</span></a></li>
+            </ul>
+        </nav>
+        <div class="signFeature">
+            <div class="profile" id="profile">
+
+            </div>
+            <button id="loginBtn"><a href="login.html">Log <span id="loginPart">In</span></a></button>
+        </div>
+    </header>
+    <section id="profileContainer">
+        <div class="profileContainer">
+            <div class="accountDetails">
+                <div class="profileGif" id="profileGif">
+                    <button id="editPhoto">edit</button>
+
+                </div>
+                <h5 id="userName">OUTCAST</h5><button id="editName">edit</button>
+                <p>Phone Number :<span id="phone">0700000000</span><button id="editPhone">edit</button></p>
+                <p>Date Joined :<span id="dateJoined">12/17/2024</span></p>
+                <p>Role :<span id="role">User</span></p>
+                <p>Level :<span id="level">Normal</span></p>
+                <p>Join Requests :<span id="joinRequests">2</span></p>
+                <P id="mobileNotification"><a href="updates.html">Notifications</a></P>
+
+                <button id="LogoutBtn">LOG OUT</button>
+            </div>
+            <div class="extradetails">
+                <button id="askbtn">Ask To Join</button><br>
+                <form class="askform" id="askform">
+                    <div class="photo" id="photo">
+
+                    </div>
+                    <fieldset>
+                        <h3 id="titleh3">Your Details</h3>
+                        <fieldset>
+                            <legend>Full Names <sup>*</sup></legend>
+                            <input type="text" name="fullName" id="fullName" autocomplete="name">
+                        </fieldset>
+                        <fieldset>
+                            <legend>Email <sup>*</sup></legend>
+                            <input type="email" name="applicationEmail" id="applicationEmail" autocomplete="email">
+                        </fieldset>
+                        <fieldset>
+                            <legend>Phone Number <sup>*</sup></legend>
+                            <input type="tel" name="applicationPhone" id="applicationPhone" autocomplete="tel">
+                        </fieldset>
+                        <fieldset>
+                            <legend>Experience <sub>(optional)</sub></legend>
+                            <textarea name="applicationExperience" id="applicationExperience"></textarea>
+                        </fieldset>
+                        <fieldset>
+                            <legend>Role <sup>*</sup></legend>
+                            <select name="role" id="applicationRole">
+                                <option value="r">select applying role</option>
+                                <option value="member">Member</option>
+                                <option value="admin">Adminstrator</option>
+                            </select>
+                        </fieldset>
+                        <button type="reset" id="clearbtn">Clear</button>
+                        <button id="submitBtn">Submit</button>
+                    </fieldset>
+                </form>
+                
+                <button class="changePassword"><a href="change.html">Change Password</a></button><br>
+                <button id="deleteAccount">Delete Account</button>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <div class="footerContent">
+            <div class="social">
+                <h4>social</h4>
+                <a href="#"><i class="fab fa-tiktok"></i>chproduction</a><br>
+                <a href="#"><i class="fab fa-instagram"></i>chproduction</a><br>
+                <a href="#"><i class="fab fa-youtube"></i>chproduction</a><br>
+                <a href="#"><i class="fab fa-facebook"></i>chproduction</a>
+            </div>
+            <div class="contact">
+                <h4>Contact Us</h4>
+                <Call:i class="fas fa-phone"></Call:i><span id="contactnumber">0793636325</span><br>
+                <i class="fas fa-fax"></i><span id="contactfax">+254793636325</span><br>
+                <i class="fas fa-envelope"></i><span id="contactemail">chprod@gmail.com</span><br>
+            </div>
+            <div class="helpcenter">
+                <h4>help & Feedback</h4>
+                <a href="feedback.html">Feedback</a><br>
+                <a href="customercare.html">Customer Care</a><br>
+                <a href="Help.html">Help</a>
+            </div>
+            <div class="quicklinks">
+                <h4>Quick Links</h4>
+                <a href="index.html">home</a><br>
+                <a href="chats.html">Notification</a><br>
+                <a href="requests.html">requests</a><br>
+                <a href="services.html">services</a><br>
+                <a href="booking.html">booking</a><br>
+                <a href="films.html">films</a><br>
+            </div>
+        </div>
+        <div class="copyrights">
+
+        </div>
+        <div class="creator">
+            <sub id="creator">Created By<br>Outcast DHO</sub>
+        </div>
+    </footer>
+    <script src="main.js"></script>
+    <script>
+        const API_BASE = "http://localhost:5000" || "http://127.0.0.1:5000";
+        async function checkAuth() { // Added 'async'
+            const token = sessionStorage.getItem("token");
+
+            if (token) {
+                try {
+                    // 1. Fetch the data
+                    const response = await fetch(`${API_BASE_URL}/api/profile`, {
+                        method: "GET",
+                        headers: {
+                            "Authorization": `Bearer ${token}`
+                        }
+                    });
+
+                    // 2. Check if the server responded successfully (200 OK)
+                    if (response.ok) {
+                        const profileData = await response.json(); // 3. Get the actual JSON body
+
+                        // Update UI
+                        document.getElementById("loginBtn").style.display = "none";
+                        document.getElementById("profileGif").style.backgroundImage = profileData.profilePhoto ? `url('${profileData.profilePhoto}')` : "url('profile.png')";
+                        document.getElementById("askbtn").style.display = "block";
+                        document.getElementById("LogoutBtn").style.display = "block";
+                        document.getElementById("profile").style.display = "block";
+                        document.getElementById("profile").style.backgroundImage = profileData.profilePhoto ? `url('${profileData.profilePhoto}')` : "url('profile.png')";
+                        const joinDate = profileData.datejoined ? new Date(profileData.datejoined).toLocaleDateString() : "N/A";
+                        document.getElementById("userName").textContent = profileData.username;
+                        document.getElementById("dateJoined").textContent = joinDate;
+                        document.getElementById("level").textContent = profileData.level;
+                        document.getElementById("phone").textContent = profileData.phone;
+                        document.getElementById("joinRequests").textContent = profileData.joinRequests || "0";
+
+                        const userDetails = JSON.parse(atob(token.split(".")[1]));
+                        document.getElementById("role").textContent = userDetails.role;
+
+                    } else {
+                        // If token is expired/invalid (401 or 403), show logged out state
+                        handleLogoutUI();
+                    }
+                } catch (error) {
+                    console.error("Network or Server error:", error);
+                    handleLogoutUI();
+                }
+            } else {
+                handleLogoutUI();
+            }
+        }
+
+        // Helper to keep code clean
+        function handleLogoutUI() {
+            document.getElementById("loginBtn").style.display = "block";
+            document.getElementById("profileGif").style.backgroundImage = "url('profile.png')";
+            document.getElementById("askbtn").style.display = "none";
+            document.getElementById("LogoutBtn").style.display = "none";
+            document.getElementById("profile").style.display = "none";
+            document.getElementById("role").textContent = "No assigned role";
+            document.getElementById("level").textContent = "No assigned level";
+            document.getElementById("dateJoined").textContent = "00/00/0000";
+            document.getElementById("userName").textContent = "..USERNAME..";
+        }
+
+
+        function logout() {
+            sessionStorage.removeItem("token");
+            window.location.href = "index.html";
+        };
+        const logBtn = document.getElementById("LogoutBtn");
+
+        logBtn.addEventListener("click", (e) => {
+            e.preventDefault();
+            let confirmed = confirm("Are you sure you want to log out?");
+            if (confirmed) {
+                logout();
+            }
+            else {
+                return;
+            }
+        })
+
+        const editPhotoBtn = document.getElementById("editPhoto");
+        const profilePhoto = document.getElementById("profileGif");
+
+        editPhotoBtn.addEventListener("click", (e) => {
+            e.preventDefault();
+            const fileInput = document.createElement("input");
+            fileInput.type = "file";
+            fileInput.accept = "image/*";
+
+            fileInput.onchange = async () => {
+                const file = fileInput.files[0];
+                if (file) {
+                    const formData = new FormData();
+                    formData.append("profilePhoto", file);
+
+                    try {
+                        const token = sessionStorage.getItem("token");
+                        const response = await fetch(`${API_BASE_URL}/api/updateProfilePic`, {
+                            method: "POST",
+                            headers: {
+                                "Authorization": `Bearer ${token}`
+                            },
+                            body: formData
+                        });
+
+                        if (response.ok) {
+                            const data = await response.json();
+
+                            profilePhoto.style.backgroundImage = `url('${data.profilePhoto}')`;
+                            alert("Profile photo updated successfully!");
+
+                        } else {
+                            alert("Failed to update profile photo.");
+                        }
+                    } catch (error) {
+                        console.error("Error uploading photo:", error);
+                        alert("An error occurred while uploading the photo.");
+                    }
+                }
+            };
+            fileInput.click();
+        });
+
+        profilePhoto.addEventListener("click", (e) => {
+            profilePhoto.style.transform = "scale(clamp(1.5,2,3.2))";
+            profilePhoto.style.zIndex = "1600";
+            profilePhoto.style.borderRadius = "0%";
+
+        });
+
+        window.addEventListener("click", (e) => {
+            if (e.target !== profilePhoto && e.target !== editPhotoBtn) {
+                profilePhoto.style.transform = "scale(1)";
+                profilePhoto.style.zIndex = "1";
+                profilePhoto.style.borderRadius = "50%";
+            }
+        });
+
+        window.addEventListener("click", (e) => {
+            if (e.target !== askbtn && e.target !== askform && !askform.contains(e.target)) {
+                askform.style.display = "none";
+            }
+        })
+        window.addEventListener("keydown", (e) => {
+            if (e.key === "Escape") {
+                profilePhoto.style.transform = "scale(1)";
+                profilePhoto.style.zIndex = "1";
+                profilePhoto.style.borderRadius = "50%";
+            }
+        });
+
+        document.getElementById("profileContainer").addEventListener("click", (e) => {
+            if (e.target.id === "editName") {
+                console.log("modal displayed");
+                enterNewName()
+            }
+            else if (e.target.id === "editPhone") {
+                console.log("modal for phone displayed")
+                enterNewPhone();
+            }
+            else {
+                return
+            }
+        });
+
+        function enterNewName() {
+            let prom = prompt("Enter New Username :");
+            if (prom) {
+                editUsername(prom);
+            }
+            else {
+                return
+            }
+        };
+
+        function enterNewPhone() {
+            let prom = prompt("Enter New phonenumber :");
+            if (prom) {
+                editUserPhoneNumber(prom);
+            }
+            else {
+                return
+            }
+        };
+
+        async function editUsername(newName) {
+            const token = sessionStorage.getItem("token");
+            const tokensplit = JSON.parse(atob(token.split(".")[1]));
+            const email = tokensplit.email;
+            const username = document.getElementById("userName")
+
+            try {
+                const response = await fetch(`${API_BASE_URL}/api/changeName`, {
+                    method: "PATCH",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Authorization": `Bearer ${token}`
+                    },
+                    body: JSON.stringify({ email, newName })
+                });
+                if (response.ok) {
+                    console.log("Username Changed Succesfully");
+                    alert("Username updated succesfully");
+                    username.textContent = newName;
+                }
+                else {
+                    const errortext = await response.json();
+                    console.error(errortext);
+                    alert("error occured updating username");
+                }
+            }
+            catch (error) {
+                console.error("An error occured updating username ", error);
+                throw error;
+            }
+        };
+
+        async function editUserPhoneNumber(newNumber) {
+            const token = sessionStorage.getItem("token");
+            const tokensplit = JSON.parse(atob(token.split(".")[1]));
+            const email = tokensplit.email;
+            const phone = document.getElementById("phone")
+
+            try {
+                const response = await fetch(`${API_BASE_URL}/api/changePhone`, {
+                    method: "PATCH",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Authorization": `Bearer ${token}`
+                    },
+                    body: JSON.stringify({ email, newNumber })
+                });
+                if (response.ok) {
+                    console.log("Phone Number Changed Succesfully");
+                    alert("Phone Number updated succesfully");
+                    phone.textContent = newNumber;
+                }
+            }
+            catch (error) {
+                console.error("An error occured updating username ", error);
+                throw error;
+            }
+        }
+
+        const myreq = document.getElementById("joinRequests");
+
+        async function displayMyrequests() {
+            const token = sessionStorage.getItem("token");
+            console.log("displaying count");
+            try {
+                const response = await fetch(`${API_BASE}/api/myrequests`, {
+                    method: "GET",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Authorization": `Bearer ${token}`
+                    }
+                });
+                if (response.ok) {
+                    const data = await response.json()
+                    myreq.textContent = data.requestTotal;
+                }
+                else {
+                    const errorText = await response()
+                    console.error("An error occured ", errorText)
+                }
+            }
+            catch (err) {
+                console.error("Network error occured ", err);
+                throw err;
+            }
+        }
+
+
+        window.onload = () => {
+            checkAuth();
+            displayMyrequests()
+        }
+
+    </script>
+</body>
+
+</html>
