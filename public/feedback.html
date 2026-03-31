@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>feedback/complaints</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+  </head>
+  <body>
+    <header>
+      <div class="logo"></div>
+      <nav>
+        <ul>
+          <li>
+            <a href="../public/index.html" id="home" title="home"
+              ><i class="fa-solid fa-home"></i
+              ><span class="labels">home</span></a
+            >
+          </li>
+          <li>
+            <a href="../public/services.html" id="services" title="services"
+              ><i class="fa-solid fa-gears"></i
+              ><span class="labels">services</span></a
+            >
+          </li>
+          <li>
+            <a href="../public/booking.html" id="hiring" title="booking"
+              ><i class="fa-solid fa-receipt"></i
+              ><span class="labels">Booking</span></a
+            >
+          </li>
+          <li style="display: block">
+            <a href="/views/notification.html" title="response" id="response"
+              ><i class="fa-solid fa-bolt"></i
+              ><span class="labels">response</span></a
+            >
+          </li>
+          <li>
+            <a href="../public/chats.html" id="chats" title="chatsbox"
+              ><i class="fa-solid fa-bell"></i
+              ><span class="labels">notification</span></a
+            >
+          </li>
+          <li>
+            <a href="../public/requests.html" title="requests" id="request"
+              ><i class="fa-solid fa-clipboard-list"></i
+              ><span class="labels">requests</span></a
+            >
+          </li>
+          <li id="admindash">
+            <a href="dashboard.html" title="dashboard" id="dashboard"
+              ><i class="fa-solid fa-chart-line"></i
+              ><span class="labels">dashboard</span></a
+            >
+          </li>
+        </ul>
+      </nav>
+      <div class="signFeature">
+        <div class="profile" id="profile"></div>
+        <button id="loginBtn">
+          <a href="../public/login.html">Log <span id="loginPart">In</span></a>
+        </button>
+      </div>
+    </header>
+    <section class="feedback-section" id="feedback-section">
+      <form action="" id="feedback-form">
+        <h2>SEND FEEDBACK</h2>
+        <fieldset>
+          <label for="feedtype">Category :</label>
+          <select name="" id="feedtype">
+            <option id="placer" value="">
+              -----------------------choose category---------------------------
+            </option>
+            <option value="complaint">Complaint</option>
+            <option value="feedback">Feedback / Compliment</option>
+            <option value="suggestion">Suggestion</option>
+          </select>
+        </fieldset>
+        <fieldset>
+          <legend>Feedback / Complaint / Suggestion</legend>
+          <textarea
+            rows="20"
+            cols="50"
+            name="feedback"
+            id="feedback"
+            placeholder="Type your feedback or complaint here"
+          ></textarea
+          ><br />
+          <sub id="totalwords"></sub>
+        </fieldset>
+        <div class="buttondiv">
+          <button id="revert">Back</button>
+
+          <button id="submit">Submit</button>
+        </div>
+      </form>
+    </section>
+    <footer>
+      <div class="footerContent">
+        <div class="social">
+          <h4>social</h4>
+          <a href="#"><i class="fab fa-tiktok"></i>chproduction</a><br />
+          <a href="#"><i class="fab fa-instagram"></i>chproduction</a><br />
+          <a href="#"><i class="fab fa-youtube"></i>chproduction</a><br />
+          <a href="#"><i class="fab fa-facebook"></i>chproduction</a>
+        </div>
+        <div class="contact">
+          <h4>Contact Us</h4>
+          <Call:i class="fas fa-phone"></Call:i
+          ><span id="contactnumber">0793636325</span><br />
+          <i class="fas fa-fax"></i><span id="contactfax">+254793636325</span
+          ><br />
+          <i class="fas fa-envelope"></i
+          ><span id="contactemail">chprod@gmail.com</span><br />
+        </div>
+        <div class="helpcenter">
+          <h4>help & Feedback</h4>
+          <a href="feedback.html">Feedback</a><br />
+          <a href="customercare.html">Customer Care</a><br />
+          <a href="Help.html">Help</a>
+        </div>
+        <div class="quicklinks">
+          <h4>Quick Links</h4>
+          <a href="../public/index.html">home</a><br />
+          <a href="../public/chats.html">Notification</a><br />
+          <a href="../public/requests.html">requests</a><br />
+          <a href="../public/services.html">services</a><br />
+          <a href="../public/booking.html">booking</a><br />
+          <a href="../public/films.html">films</a><br />
+        </div>
+      </div>
+      <div class="copyrights"></div>
+      <div class="creator">
+        <sub id="creator">Created By<br />Outcast DHO</sub>
+      </div>
+    </footer>
+    <script src="main.js"></script>
+    <script src="user.js"></script>
+    <script src="profile.js"></script>
+    <script>
+      const submitbtn = document.getElementById("submit");
+      const textfeed = document.getElementById("feedback");
+      const countdisplay = document.getElementById("totalwords");
+      const maxwords = 50;
+
+      textfeed.addEventListener("input", () => {
+        const words = textfeed.value.trim().split(/\s+/);
+        const countwords = words[0] === "" ? 0 : words.length;
+
+        countdisplay.textContent = `${countwords}/${maxwords}`;
+
+        if (countwords > maxwords) {
+          submitbtn.disabled = true;
+          submitbtn.style.opacity = "0.5";
+          textfeed.style.borderColor = "red";
+          countdisplay.style.color = "red";
+        } else {
+          submitbtn.disabled = false;
+          submitbtn.style.opacity = "1";
+          textfeed.style.borderColor = "black";
+        }
+      });
+
+      document
+        .getElementById("feedback-section")
+        .addEventListener("click", async (e) => {
+          e.preventDefault();
+
+          if (e.target.id === "revert") {
+            console.log("Redirected");
+            window.history.go(-1);
+          } else if (e.target.id === "submit") {
+            const user = document.getElementById("user").value.trim();
+            const fed = document.getElementById("feedback").value.trim();
+            const categ = document.getElementById("feedtype");
+            const cat = categ.value;
+
+            if ((currentUserId && fed && cat) || (fed && cat)) {
+              await sendFeed(currentUserId);
+              console.log("feed sent");
+              alert(
+                "Thanks for sharing with OPG, we appreciate for your feedback  ",
+              );
+
+              window.location.href = "index.html";
+            } else {
+              alert(
+                "Please ensure every required field are filled or selected.",
+              );
+              console.log("No feedback sent");
+              return;
+            }
+          } else {
+            console.log("No button clicked");
+            return;
+          }
+        });
+
+      async function sendFeed(currentUserId) {
+        const feeder = document.getElementById("feedback");
+        const feedback = feeder.value;
+        const fed = document.getElementById("feedtype");
+        const feedtype = fed.value;
+        const d = new Date();
+        const today = d.toISOString();
+
+        let admin = "tiYcZE83vJMJ0M2Y1pBud89VKU83";
+
+        try {
+          const feeds = {
+            feed: feedback,
+            category: feedtype,
+            TimeSent: serverTimestamp(),
+            DateSent: d,
+            feederId: currentUserId,
+            Username: "",
+            participants: [currentUserId, admin],
+          };
+
+          await addDoc(collection(db, "feedbacks"), feeds);
+          console.log("saved succesfully");
+          //feeder.value="";
+        } catch (error) {
+          console.error("Error sending feedback:", error);
+          alert("Error sending feedback :", error);
+        }
+      }
+    </script>
+  </body>
+</html>
