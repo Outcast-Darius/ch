@@ -313,7 +313,7 @@ async function getMembers() {
     ORDER BY username ASC
     `;
     try {
-        const [results] = await pool.execute(subpool, ['member', 'normal']);
+        const [results] = await pool.execute(subpool, ['Member', 'normal']);
         return results
     }
     catch (error) {
